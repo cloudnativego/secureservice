@@ -12,10 +12,11 @@ func homeHandler(res http.ResponseWriter, req *http.Request) {
     <title>Secured APIs</title>
   </head>
   <body>
-    <h1>Secured APIs</h1>
+    <h4>Secured API endpoints for the <code>secureweb</code> application.</h4>
     <ul>
       <li>GET <code>/api/get</code></li>
       <li>POST <code>/api/post</code></li>
+    </ul>
   </body>
 </html>
 `
