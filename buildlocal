@@ -1,0 +1,18 @@
+sample="
+===================================
+X_API_KEY=somekeyvalue
+===================================
+"
+
+if [ ! -e "$1" ]
+then
+echo "You must provide an environment file."
+echo "USAGE: ./buildlocal local_config/env"
+echo ""
+echo "Sample environment file: $sample"
+exit 1
+fi
+
+rm -rf _builds _steps _projects _cache _temp
+wercker --environment $1 build --git-domain github.com --git-owner cloudnativego --git-repository secureservice
+rm -rf _builds _steps _projects _cache _temp
