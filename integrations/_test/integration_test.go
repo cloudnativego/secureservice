@@ -46,7 +46,7 @@ func TestIntegration(t *testing.T) {
 	// GET /api/get with invalid API_KEY
 	recorder = httptest.NewRecorder()
 	server.ServeHTTP(recorder, createRequest("GET", getAPI, true, false))
-	if recorder.Code != http.StatusUnauthorized {
+	if recorder.Code != http.StatusForbidden {
 		t.Errorf("Expected response code to be %d, received %d", http.StatusUnauthorized, recorder.Code)
 	}
 
@@ -60,8 +60,8 @@ func TestIntegration(t *testing.T) {
 	// POST /api/get with invalid API_KEY
 	recorder = httptest.NewRecorder()
 	server.ServeHTTP(recorder, createRequest("POST", getAPI, true, false))
-	if recorder.Code != http.StatusUnauthorized {
-		t.Errorf("Expected response code to be %d, received %d", http.StatusUnauthorized, recorder.Code)
+	if recorder.Code != http.StatusForbidden {
+		t.Errorf("Expected response code to be %d, received %d", http.StatusForbidden, recorder.Code)
 	}
 
 	// POST /api/get with valid API_KEY
@@ -81,8 +81,8 @@ func TestIntegration(t *testing.T) {
 	// POST /api/post with invalid API_KEY
 	recorder = httptest.NewRecorder()
 	server.ServeHTTP(recorder, createRequest("POST", postAPI, true, false))
-	if recorder.Code != http.StatusUnauthorized {
-		t.Errorf("Expected response code to be %d, received %d", http.StatusUnauthorized, recorder.Code)
+	if recorder.Code != http.StatusForbidden {
+		t.Errorf("Expected response code to be %d, received %d", http.StatusForbidden, recorder.Code)
 	}
 
 	// POST /api/post with valid API_KEY
@@ -95,8 +95,8 @@ func TestIntegration(t *testing.T) {
 	// GET /api/post with invalid API_KEY
 	recorder = httptest.NewRecorder()
 	server.ServeHTTP(recorder, createRequest("GET", postAPI, true, false))
-	if recorder.Code != http.StatusUnauthorized {
-		t.Errorf("Expected response code to be %d, received %d", http.StatusUnauthorized, recorder.Code)
+	if recorder.Code != http.StatusForbidden {
+		t.Errorf("Expected response code to be %d, received %d", http.StatusForbidden, recorder.Code)
 	}
 
 	// GET /api/post with valid API_KEY
